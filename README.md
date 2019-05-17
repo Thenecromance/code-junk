@@ -1,3 +1,4 @@
+
 ## What is this doing
 some Part of interesting function code in the GTA 
 which is write by myself
@@ -12,3 +13,10 @@ which is write by myself
 * `Online.cpp`: about this part I'm not sure is this right or not, but I still decide to public this part.
     
     * it has include lots of interesting part of TRigger Script event, if u want to prevent it, you'd better find it by yourself XP
+## What 3rd party lib u need
+* [RapidJSON GitHub](https://github.com/Tencent/rapidjson/)
+* [Simple Ini](https://github.com/brofield/simpleini)
+* [TinyXML](https://sourceforge.net/projects/tinyxml/)
+
+
+Discord:Thenecromance#7382
