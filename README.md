@@ -14,7 +14,7 @@ which is write by myself
     
     * it has include lots of interesting part of TRigger Script event, if u want to prevent it, you'd better find it by yourself XP
 ## What 3rd party lib u need
-* [RapidJSON GitHub](https://github.com/Tencent/rapidjson/)
+* [nlohmann/json](https://github.com/nlohmann/json)
 * [Simple Ini](https://github.com/brofield/simpleini)
 * [TinyXML](https://sourceforge.net/projects/tinyxml/)
 
