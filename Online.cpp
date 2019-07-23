@@ -1,151 +1,104 @@
-#include "stdafx.h"
-
-#define PROP_MONEY_BAG_01 0x113FD533
-#define PICKUP_MONEY_CASE 0xCE6FDD6B
-#define MAIN_PERSISTENT 0x5700179C
-#define PICKUP_MONEY_CASE 0xCE6FDD6B
-#define PICKUP_MONEY_VARIABLE 0xEA888D49
-
-namespace Online
-{
-
-
 #pragma region About Money
-	bool MoneyLoopBool = false;
-	void Money(bool islogged, bool add, bool bank, int amount)
+bool MoneyLoopBool = false;
+void Money(bool islogged, bool add, bool bank, int amount)
+{
+	int iVar4 = 2147483647;//never Change..
+	int addId = 1445302971;
+	int transactionid = 312105838;
+	if (add)
 	{
-		int iVar4 = 2147483647;//never Change..
-		int addId = 1445302971;
-		int transactionid = 312105838;
-		if (add)
-		{
-			addId = 1445302971;
-			transactionid = 312105838;
-		}
-		else
-		{
-			addId = 537254313;
-			transactionid = -1645229221;
-		}
-
-
-		if (UNK3::_NETWORK_SHOP_BEGIN_SERVICE(&iVar4, 1474183246, transactionid, addId, amount, bank ? 4 : 1))
-			if (UNK3::_NETWORK_SHOP_CHECKOUT_START(iVar4))
-				if (islogged)
-					NETWORKCASH::NETWORK_EARN_FROM_ROCKSTAR(amount);
-		STREAMING::REQUEST_NAMED_PTFX_ASSET("scr_ornate_heist");
-		GRAPHICS::_USE_PARTICLE_FX_ASSET_NEXT_CALL("scr_ornate_heist");
-		GRAPHICS::_START_PARTICLE_FX_NON_LOOPED_ON_PED_BONE_2("scr_heist_ornate_banknotes", PLAYER::PLAYER_PED_ID(), 0, 0, 0, 0, 0, 0, 31086, 0.2f, 0, 0, 0);
-
-
-		GRAPHICS::_USE_PARTICLE_FX_ASSET_NEXT_CALL("scr_ornate_heist");
-		GRAPHICS::_START_PARTICLE_FX_NON_LOOPED_ON_PED_BONE_2("scr_heist_ornate_banknotes", PLAYER::PLAYER_PED_ID(), 0, 0, 0, 0, 0, 0, 28422, 0.1f, 0, 0, 0);
-
-		GRAPHICS::_USE_PARTICLE_FX_ASSET_NEXT_CALL("scr_ornate_heist");
-		GRAPHICS::_START_PARTICLE_FX_NON_LOOPED_ON_PED_BONE_2("scr_heist_ornate_banknotes", PLAYER::PLAYER_PED_ID(), 0, 0, 0, 0, 0, 0, 60309, 0.1f, 0, 0, 0);
-
-		GRAPHICS::_USE_PARTICLE_FX_ASSET_NEXT_CALL("scr_agencyheist");
-		GRAPHICS::_START_PARTICLE_FX_NON_LOOPED_ON_PED_BONE_2("scr_heist_ornate_banknotes", PLAYER::PLAYER_PED_ID(), 0, 0, 0, 0, 0, 0, 65245, 0.2f, 0, 0, 0);
-
-		GRAPHICS::_USE_PARTICLE_FX_ASSET_NEXT_CALL("scr_ornate_heist");
-		GRAPHICS::_START_PARTICLE_FX_NON_LOOPED_ON_PED_BONE_2("scr_heist_ornate_banknotes", PLAYER::PLAYER_PED_ID(), 0, 0, 0, 0, 0, 0, 35502, 0.2f, 0, 0, 0);
+		addId = 1445302971;
+		transactionid = 312105838;
 	}
-
-	bool Depoist15MBool = false;
-	void Depoist15M(bool bank)
+	else
 	{
-		// 15M has limit 
-		//less than 300M
-		//globalHandle
-		int iVar4 = 2147483647;//never Change..
-		int isadd = 1445302971;
-		UNK3::_NETWORK_SHOP_BEGIN_SERVICE(&iVar4, 1474183246, -1586170317, isadd, 15000000, bank ? 8 : 4);
-		UNK3::_NETWORK_SHOP_CHECKOUT_START(iVar4);
+		addId = 537254313;
+		transactionid = -1645229221;
 	}
 
-	bool moneyrain2k = false;
-	void RainMoney(bool toggle)
+
+	if (UNK3::_NETWORK_SHOP_BEGIN_SERVICE(&iVar4, 1474183246, transactionid, addId, amount, bank ? 4 : 1))
+		if (UNK3::_NETWORK_SHOP_CHECKOUT_START(iVar4))
+			if (islogged)
+				NETWORKCASH::NETWORK_EARN_FROM_ROCKSTAR(amount);
+	STREAMING::REQUEST_NAMED_PTFX_ASSET("scr_ornate_heist");
+	GRAPHICS::_USE_PARTICLE_FX_ASSET_NEXT_CALL("scr_ornate_heist");
+	GRAPHICS::_START_PARTICLE_FX_NON_LOOPED_ON_PED_BONE_2("scr_heist_ornate_banknotes", PLAYER::PLAYER_PED_ID(), 0, 0, 0, 0, 0, 0, 31086, 0.2f, 0, 0, 0);
+
+
+	GRAPHICS::_USE_PARTICLE_FX_ASSET_NEXT_CALL("scr_ornate_heist");
+	GRAPHICS::_START_PARTICLE_FX_NON_LOOPED_ON_PED_BONE_2("scr_heist_ornate_banknotes", PLAYER::PLAYER_PED_ID(), 0, 0, 0, 0, 0, 0, 28422, 0.1f, 0, 0, 0);
+
+	GRAPHICS::_USE_PARTICLE_FX_ASSET_NEXT_CALL("scr_ornate_heist");
+	GRAPHICS::_START_PARTICLE_FX_NON_LOOPED_ON_PED_BONE_2("scr_heist_ornate_banknotes", PLAYER::PLAYER_PED_ID(), 0, 0, 0, 0, 0, 0, 60309, 0.1f, 0, 0, 0);
+
+	GRAPHICS::_USE_PARTICLE_FX_ASSET_NEXT_CALL("scr_agencyheist");
+	GRAPHICS::_START_PARTICLE_FX_NON_LOOPED_ON_PED_BONE_2("scr_heist_ornate_banknotes", PLAYER::PLAYER_PED_ID(), 0, 0, 0, 0, 0, 0, 65245, 0.2f, 0, 0, 0);
+
+	GRAPHICS::_USE_PARTICLE_FX_ASSET_NEXT_CALL("scr_ornate_heist");
+	GRAPHICS::_START_PARTICLE_FX_NON_LOOPED_ON_PED_BONE_2("scr_heist_ornate_banknotes", PLAYER::PLAYER_PED_ID(), 0, 0, 0, 0, 0, 0, 35502, 0.2f, 0, 0, 0);
+}
+
+bool Depoist15MBool = false;
+void Depoist15M(bool bank)
+{
+	// 15M has limit 
+	//less than 300M
+	//globalHandle
+	int iVar4 = 2147483647;//never Change..
+	int isadd = 1445302971;
+	UNK3::_NETWORK_SHOP_BEGIN_SERVICE(&iVar4, 1474183246, -1586170317, isadd, 15000000, bank ? 8 : 4);
+	UNK3::_NETWORK_SHOP_CHECKOUT_START(iVar4);
+}
+
+bool moneyrain2k = false;
+void RainMoney(bool toggle)
+{
+	STREAMING::REQUEST_MODEL(0x113FD533);
+	Vector3 pp = ENTITY::GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(PLAYER::PLAYER_PED_ID(), 0.0, 0.0, 20.0);
+	int offsetX = (int)GAMEPLAY::GET_RANDOM_FLOAT_IN_RANGE(-5, 0);
+	int offsetyY = (int)GAMEPLAY::GET_RANDOM_FLOAT_IN_RANGE(-5, 0);
+	int offsetX1 = (int)GAMEPLAY::GET_RANDOM_FLOAT_IN_RANGE(-6, 6);
+	int offsetyY1 = (int)GAMEPLAY::GET_RANDOM_FLOAT_IN_RANGE(-3, 3);
+	int offsetZ = (int)GAMEPLAY::GET_RANDOM_FLOAT_IN_RANGE(-2, 2);
+	int CashHash = -1666779307;  // prop_paper_bag_small = -1803909274
+	int PickupHash = GAMEPLAY::GET_HASH_KEY("PICKUP_MONEY_WALLET");
+	STREAMING::REQUEST_MODEL(CashHash);
+	while (!STREAMING::HAS_MODEL_LOADED(CashHash)) WAIT(0);
+
+	int AMOUNT = GAMEPLAY::GET_RANDOM_INT_IN_RANGE(20000, 40000);
+	OBJECT::CREATE_AMBIENT_PICKUP(PickupHash, pp.x + offsetX, pp.y + offsetyY, pp.z, 2500, AMOUNT, CashHash, false, true);
+	STREAMING::SET_MODEL_AS_NO_LONGER_NEEDED(CashHash);
+
+}
+
+bool moneydropp = false;
+int newmoneydelay = 1000;
+bool newmoneyBool = false;
+void newmoney(int delay) {
+	int currenttime = timeGetTime();
+	Ped iPed = PLAYER::PLAYER_PED_ID();
 	{
-		STREAMING::REQUEST_MODEL(0x113FD533);
-		Vector3 pp = ENTITY::GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(PLAYER::PLAYER_PED_ID(), 0.0, 0.0, 20.0);
-		int offsetX = (int)GAMEPLAY::GET_RANDOM_FLOAT_IN_RANGE(-5, 0);
-		int offsetyY = (int)GAMEPLAY::GET_RANDOM_FLOAT_IN_RANGE(-5, 0);
-		int offsetX1 = (int)GAMEPLAY::GET_RANDOM_FLOAT_IN_RANGE(-6, 6);
-		int offsetyY1 = (int)GAMEPLAY::GET_RANDOM_FLOAT_IN_RANGE(-3, 3);
-		int offsetZ = (int)GAMEPLAY::GET_RANDOM_FLOAT_IN_RANGE(-2, 2);
-		int CashHash = -1666779307;  // prop_paper_bag_small = -1803909274
-		int PickupHash = GAMEPLAY::GET_HASH_KEY("PICKUP_MONEY_WALLET");
-		STREAMING::REQUEST_MODEL(CashHash);
-		while (!STREAMING::HAS_MODEL_LOADED(CashHash)) WAIT(0);
-
-		int AMOUNT = GAMEPLAY::GET_RANDOM_INT_IN_RANGE(20000, 40000);
-		OBJECT::CREATE_AMBIENT_PICKUP(PickupHash, pp.x + offsetX, pp.y + offsetyY, pp.z, 2500, AMOUNT, CashHash, false, true);
-		STREAMING::SET_MODEL_AS_NO_LONGER_NEEDED(CashHash);
-
-	}
-
-	bool moneydropp = false;
-	int newmoneydelay = 1000;
-	bool newmoneyBool = false;
-	void newmoney(int delay) {
-		int currenttime = timeGetTime();
-		Ped iPed = PLAYER::PLAYER_PED_ID();
+		if ((timeGetTime() - currenttime > delay)) // Time between drops
 		{
-			if ((timeGetTime() - currenttime > delay)) // Time between drops
-			{
-				Vector3 coords = ENTITY::GET_ENTITY_COORDS(iPed, FALSE);
-				int PickupHash = GAMEPLAY::GET_HASH_KEY("prop_paper_bag_small");
-				STREAMING::REQUEST_MODEL(PickupHash);
-				while (!STREAMING::HAS_MODEL_LOADED(PickupHash)) WAIT(0);
-				OBJECT::CREATE_AMBIENT_PICKUP(PickupHash, coords.x, coords.y, coords.z, 0, 2500, PickupHash, false, true);
-				STREAMING::SET_MODEL_AS_NO_LONGER_NEEDED(PickupHash);
-				currenttime = timeGetTime();
-			}
+			Vector3 coords = ENTITY::GET_ENTITY_COORDS(iPed, FALSE);
+			int PickupHash = GAMEPLAY::GET_HASH_KEY("prop_paper_bag_small");
+			STREAMING::REQUEST_MODEL(PickupHash);
+			while (!STREAMING::HAS_MODEL_LOADED(PickupHash)) WAIT(0);
+			OBJECT::CREATE_AMBIENT_PICKUP(PickupHash, coords.x, coords.y, coords.z, 0, 2500, PickupHash, false, true);
+			STREAMING::SET_MODEL_AS_NO_LONGER_NEEDED(PickupHash);
+			currenttime = timeGetTime();
 		}
 	}
+}
 #pragma endregion
-}
-
-namespace BlackOption
-{
-	void CloneCrash(int selectPlayer)
-	{
-		for (int i = 0; i < 999; i++)
-		{
-			Entity clone = PED::CLONE_PED(PLAYER::GET_PLAYER_PED_SCRIPT_INDEX(selectPlayer), 1, 1, 1);
-			if (ENTITY::DOES_ENTITY_EXIST(clone))
-			{
-				ENTITY::ATTACH_ENTITY_TO_ENTITY(clone, PLAYER::GET_PLAYER_PED_SCRIPT_INDEX(selectPlayer), 31086, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 2, 1);
-
-			}
-			WAIT(0);
-		}
-	}
-
-	void ObjectCrash(int selectPlayer)
-	{
-		for (auto id : CrashObj)
-		{
-			Online::attachobjects2(id, selectPlayer);
-		}
-	}
-	//CrashObj
-}
-static void TRIGGER_SCRIPT_EVENT(int eventGroup, Any* args, uint64_t argCount, uint32_t bit)
-{
-	//static auto func = reinterpret_cast<void(*)(int, Any*, uint64_t, uint32_t)>(Memory::pattern("48 8B C4 48 89 58 08 48 89 68 10 48 89 70 18 48 89 78 20 41 56 48 81 EC ? ? ? ? 45 8B F0 41 8B F9").count(1).get(0).get<void>(0));
-	//int bitset = 0;
-	//GAMEPLAY::SET_BIT(&bitset, bit);
-	//if (bitset != 0)
-	//	func(eventGroup, args, argCount, bitset);
-}
 
 #pragma region This is remote Part, but when I write this, this function hasn't be added to this menu
 
 //is not difficult to find 
 std::vector<int> spamMsg =
 {
-//Find it by yourself
+	//Find it by yourself
 };
 int fakeammount = 0;
 int pos = 1;
@@ -327,3 +280,28 @@ void RemoteFunctions()
 
 }
 #pragma endregion
+
+//_NETWORK_SHOP_BEGIN_SERVICE
+/*
+-494565059
+827308208
+-1857685192
+1698417709
+-2017925037
+1057653594
+1810506918
+451427308
+824622151
+1253978276
+-1576080766
+1508411869
+1428501742
+-1918967151
+1261538664
+1180397655
+1414674366
+261460130
+-2027658376
+1727256317
+
+*/
